@@ -9,7 +9,7 @@ const inter = Inter({ subsets: ["latin"], variable: '--font-sans' })
 
 export const metadata: Metadata = {
   title: 'Take & Go Falkenberg | Pizza & Burgare',
-  description: 'Falkenbergs bästa food truck! Akta italiensk pizza, saftiga burgare och mycket mer. Bestall och hamta - Take & Go!',
+  description: 'Falkenbergs bästa food truck! Äkta italiensk pizza, saftiga burgare och mycket mer. Beställ och hämta – Take & Go!',
   icons: {
     icon: [
       {
