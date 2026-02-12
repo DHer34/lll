@@ -4,11 +4,10 @@
 @custom-variant dark (&:is(.dark *));
 
 /* ===============================
-   THEME VARIABLES (REFINED)
+   COLOR VARIABLES (IMPROVED ONLY)
    =============================== */
 
 :root {
-  /* Core surfaces */
   --background: #0b0f14;
   --foreground: #f8fafc;
 
@@ -18,14 +17,12 @@
   --popover: #111827;
   --popover-foreground: #f8fafc;
 
-  /* Brand */
   --primary: #ef4444;
   --primary-foreground: #ffffff;
 
   --secondary: #22c55e;
   --secondary-foreground: #052e16;
 
-  /* UI neutrals */
   --muted: #1f2933;
   --muted-foreground: #9ca3af;
 
@@ -39,78 +36,57 @@
   --input: #1f2937;
   --ring: #ef4444;
 
-  /* Charts */
   --chart-1: #ef4444;
   --chart-2: #22c55e;
   --chart-3: #f59e0b;
   --chart-4: #38bdf8;
   --chart-5: #a78bfa;
 
-  /* Radius */
   --radius: 0.75rem;
 
-  /* Sidebar */
   --sidebar: #0f172a;
   --sidebar-foreground: #e5e7eb;
-
   --sidebar-primary: #ef4444;
   --sidebar-primary-foreground: #ffffff;
-
   --sidebar-accent: #1f2937;
   --sidebar-accent-foreground: #f9fafb;
-
   --sidebar-border: #1e293b;
   --sidebar-ring: #ef4444;
 }
 
-/* ===============================
-   TAILWIND THEME MAPPING
-   =============================== */
-
 @theme inline {
-  --font-sans: var(--font-sans, 'Inter'), system-ui, sans-serif;
-  --font-serif: var(--font-serif, 'Playfair Display'), serif;
-  --font-mono: 'Geist Mono', monospace;
+  --font-sans: var(--font-sans, 'Inter'), 'Inter Fallback', system-ui, sans-serif;
+  --font-serif: var(--font-serif, 'Playfair Display'), 'Playfair Display Fallback', serif;
+  --font-mono: 'Geist Mono', 'Geist Mono Fallback';
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
-
   --color-popover: var(--popover);
   --color-popover-foreground: var(--popover-foreground);
-
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
-
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
-
   --color-muted: var(--muted);
   --color-muted-foreground: var(--muted-foreground);
-
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
-
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-
   --color-chart-1: var(--chart-1);
   --color-chart-2: var(--chart-2);
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
-
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -121,61 +97,32 @@
   --color-sidebar-ring: var(--sidebar-ring);
 }
 
-/* ===============================
-   BASE STYLES
-   =============================== */
-
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
-
   html {
     scroll-behavior: smooth;
     scroll-padding-top: 80px;
   }
-
-  html,
-  body {
+  html, body {
     @apply bg-background text-foreground overflow-x-hidden;
   }
 }
 
-::selection {
-  background: rgba(239, 68, 68, 0.3);
-  color: #f8fafc;
-}
-
-/* ===============================
-   ANIMATIONS
-   =============================== */
+/* ===== ANIMATIONS (UNCHANGED) ===== */
 
 @keyframes fade-up {
   from { opacity: 0; transform: translateY(40px); }
   to { opacity: 1; transform: translateY(0); }
 }
-.animate-fade-up {
-  animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  opacity: 0;
-}
+.animate-fade-up { animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
 
-@keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-.animate-fade-in {
-  animation: fade-in 0.6s ease-out forwards;
-  opacity: 0;
-}
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+.animate-fade-in { animation: fade-in 0.6s ease-out forwards; opacity: 0; }
 
-@keyframes scale-in {
-  from { transform: scale(0.9); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
-}
-.animate-scale-in {
-  animation: scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  opacity: 0;
-}
+@keyframes scale-in { from { transform: scale(0.9); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.animate-scale-in { animation: scale-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; opacity: 0; }
 
 @keyframes float-gentle {
   0%, 100% { transform: translate(0, 0); }
@@ -183,82 +130,45 @@
   50% { transform: translate(-4px, -20px); }
   75% { transform: translate(-12px, -8px); }
 }
-.animate-float-gentle {
-  animation: float-gentle 8s ease-in-out infinite;
-}
+.animate-float-gentle { animation: float-gentle ease-in-out infinite; }
 
 @keyframes pulse-slow {
   0%, 100% { opacity: 0.4; transform: scale(1); }
   50% { opacity: 0.7; transform: scale(1.03); }
 }
-.animate-pulse-slow {
-  animation: pulse-slow 8s ease-in-out infinite;
-}
+.animate-pulse-slow { animation: pulse-slow 8s ease-in-out infinite; }
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
+@keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
 .animate-shimmer {
   background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.06) 50%, transparent 100%);
   background-size: 200% 100%;
   animation: shimmer 3s infinite;
 }
 
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-.animate-spin-slow {
-  animation: spin-slow 20s linear infinite;
-}
+@keyframes spin-slow { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+.animate-spin-slow { animation: spin-slow 20s linear infinite; }
 
-@keyframes bounce-slow {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-16px); }
-}
-.animate-bounce-slow {
-  animation: bounce-slow 2s ease-in-out infinite;
-}
+@keyframes bounce-slow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+.animate-bounce-slow { animation: bounce-slow 2s ease-in-out infinite; }
 
 @keyframes logo-entrance {
   0% { opacity: 0; transform: scale(0.3) rotate(-10deg); }
   50% { transform: scale(1.08) rotate(3deg); }
   100% { opacity: 1; transform: scale(1) rotate(0deg); }
 }
-.animate-logo-entrance {
-  animation: logo-entrance 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
+.animate-logo-entrance { animation: logo-entrance 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
 
-@keyframes logo-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-.animate-logo-float {
-  animation: logo-float 3s ease-in-out infinite;
-}
+@keyframes logo-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+.animate-logo-float { animation: logo-float 3s ease-in-out infinite; }
 
-@keyframes gradient-shift {
-  0%, 100% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-}
-.animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient-shift 3s ease infinite;
-}
+@keyframes gradient-shift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+.animate-gradient { background-size: 200% 200%; animation: gradient-shift 3s ease infinite; }
 
-/* ===============================
-   UI HELPERS
-   =============================== */
-
-.menu-card-hover {
-  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-}
+/* UI helpers */
+.menu-card-hover { transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
 .menu-card-hover:hover {
   transform: translateY(-3px);
-  box-shadow:
-    0 20px 40px -16px rgba(239, 68, 68, 0.25),
-    0 0 0 1px rgba(239, 68, 68, 0.15);
+  box-shadow: 0 20px 40px -16px rgba(239, 68, 68, 0.25), 0 0 0 1px rgba(239, 68, 68, 0.15);
 }
 
 .video-vignette::after {
@@ -269,11 +179,10 @@
   pointer-events: none;
 }
 
-.bg-gradient-radial {
-  background: radial-gradient(circle, var(--tw-gradient-from) 0%, var(--tw-gradient-to) 70%);
-}
+.bg-gradient-radial { background: radial-gradient(circle, var(--tw-gradient-from) 0%, var(--tw-gradient-to) 70%); }
 
-/* Stagger helpers */
+::selection { background: rgba(239, 68, 68, 0.3); color: #f8fafc; }
+
 .stagger-1 { animation-delay: 0.1s; }
 .stagger-2 { animation-delay: 0.2s; }
 .stagger-3 { animation-delay: 0.3s; }
