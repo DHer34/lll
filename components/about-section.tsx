@@ -7,8 +7,8 @@ import { Flame, Heart, Star, Truck, UtensilsCrossed, Timer } from "lucide-react"
 const features = [
   {
     icon: Flame,
-    title: "Eldad med passion",
-    description: "Varje pizza bakas i vår heta ugn med handgjord deg och de färskaste ingredienserna varje dag.",
+    title: "Eldad ",
+    description: ".",
   },
 ]
 
@@ -39,11 +39,11 @@ export function AboutSection() {
             Om Oss
           </span>
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-foreground mb-6 text-balance">
-            Mer an bara mat
+            about
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg leading-relaxed">
           Vi är Take & Go – en food truck som brinner för god mat och glada kunder i Falkenberg.
-          Vår passion är att servera äkta smaker med ett leende.
+   
           </p>
         </div>
 
